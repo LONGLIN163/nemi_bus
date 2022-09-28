@@ -1,6 +1,5 @@
 package com.neimi.publicService.Bus;
 import javax.persistence.*;
-
 @Entity
 @Table
 public class Bus {
@@ -15,6 +14,7 @@ public class Bus {
             strategy = GenerationType.SEQUENCE,
             generator = "bus_sequence"
     )
+
     private Long id;
     private String name;
     private String location;
@@ -25,6 +25,14 @@ public class Bus {
     }
 
     public Bus(String name, String location, String client, Boolean active) {
+        this.name = name;
+        this.location = location;
+        this.client = client;
+        this.active = active;
+    }
+
+    public Bus(Long id, String name, String location, String client, Boolean active) {
+        this.id=id;
         this.name = name;
         this.location = location;
         this.client = client;

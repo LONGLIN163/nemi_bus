@@ -20,7 +20,7 @@ public class BusService {
     }
 
     public void addNewBus(Bus bus) {
-        Optional<Bus> result = busRepository.findBusByName(bus.getClient());
+        Optional<Bus> result = busRepository.findBusByName(bus.getName());
         if(result.isPresent()){
            throw new IllegalStateException("This bus is taken!");
         }
@@ -28,11 +28,7 @@ public class BusService {
     }
 
     public void deleteBus(Long busId) {
-        System.out.println("*******************************");
-        System.out.println(busId);
-        System.out.println("*******************************");
         boolean result = busRepository.existsById(busId);
-        System.out.println(result);
         if(!result){
             throw new IllegalStateException("There is no such bus "+busId+" in the db");
         }
